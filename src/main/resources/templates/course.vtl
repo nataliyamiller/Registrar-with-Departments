@@ -1,0 +1,36 @@
+#if($students.size() != 0)
+<h2>These students are currently enrolled in $course.getCourseName() $course.getCourseNumber():</h2>
+  <h5>Please click on a student to update student's information or to remove them from this course:</h5>
+  <ul>
+    #foreach($student in $students)
+      <li><a href="/students/$student.getId()/update">$student.getName(), $student.getEnrollDate()</a></li>
+    #end
+  </ul>
+#else
+  <h2>No students are enrolled in this course yet. Add the first student!</h2>
+#end
+
+<h3>Add a new student:</h3>
+
+<form action="/courses/$course.getId()" method="post">
+    <div class="form-group">
+      <label for="name">Student Name</label>
+      <input id="name" name="name" type="text" placeholder="Sophia Larm">
+    </div>
+
+    <div class="form-group">
+      <label for="enroll_date">Date of Enrollment</label>
+      <input id="enroll_date" name="enroll_date" type="text" placeholder="09/12/15">
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg">Add new student</button>
+</form>
+<hr/>
+
+<h4>Update this course information:</h4>
+
+<form action="/courses/$course.getId()" method="post">
+  <label for="course_name">New Course name</label>
+  <input id="course_name" name="course_name" type="text" placeholder="Cool French Lit">
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>

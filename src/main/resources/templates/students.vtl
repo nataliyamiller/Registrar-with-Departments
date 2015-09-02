@@ -1,0 +1,28 @@
+<h1 class="well">Students</h1>
+
+#if($students.size() !=0)
+  <ol>
+    #foreach ($student in $students)
+    <h4><li><a href="/students/$student.getId()">$student.getName(), enrollment date: $student.getEnrollDate()</a></li></h4>
+    #end
+  </ol>
+#else
+<p>There are no students in your list yet. Add your first student!</p>
+#end
+
+<hr/>
+
+<h3>Add a new student</h3>
+  <form action="/students" method="post">
+      <div class="form-group">
+        <label for="name">Student Name: </label>
+        <input id="name" name="name" type="text" placeholder="John Smith">
+      </div>
+
+      <div class="form-group">
+        <label for="enroll_date">Date of Enrollment: </label>
+        <input id="enroll_date" name="enroll_date" type="text" placeholder="09/01/15">
+      </div>
+
+      <button type="submit" class="btn btn-primary">Add new student</button>
+  </form>
