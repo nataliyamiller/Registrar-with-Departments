@@ -1,12 +1,12 @@
-# To Do List - with database
+# University Registrar - with clients, students, and departments models (not yet finished, in process)
 
-##### A university registrar. September 1, 2015.
+##### A university registrar with Departments. September 2, 2015.
 
-#### By **Nataliya Bareeva-Miller and  Diana Holland**
+#### By **Nataliya Bareeva-Miller**
 
 ## Description
 
-Administrators can add students to courses, and courses to students.
+Administrators can add students to courses, and courses to students. Administrators can also add departments, and add students and courses to departments.
 
 ## Setup
 
@@ -19,9 +19,10 @@ Administrators can add students to courses, and courses to students.
 
 CREATE DATABASE university_registrar;
 \c university_registrar;
-CREATE TABLE courses (id SERIAL PRIMARY KEY, course_name VARCHAR(50), course_number VARCHAR(15));
-CREATE TABLE students (id SERIAL PRIMARY KEY, name VARCHAR(50), enroll_date VARCHAR(25));
+CREATE TABLE courses (id SERIAL PRIMARY KEY, course_name VARCHAR(50), course_number VARCHAR(15), depatment_id int);
+CREATE TABLE students (id SERIAL PRIMARY KEY, name VARCHAR(50), enroll_date VARCHAR(25), department_id int);
 CREATE TABLE courses_students (id SERIAL PRIMARY KEY, course_id INT, student_id INT);
+CREATE TABLE departments (id SERIAL PRIMARY KEY, department_name varchar(50));
 CREATE DATABASE university_registrar_test WITH TEMPLATE university_registrar;
 
 ## Technologies Used
@@ -30,7 +31,7 @@ This app is written in Java with a little help from Bootstrap.
 
 ### Legal
 
-Copyright (c) 2015 **Nataliya Bareeva-Miller and  Diana Holland**
+Copyright (c) 2015 **Nataliya Bareeva-Miller
 
 This software is licensed under the MIT license.
 
